@@ -1,0 +1,180 @@
+:root {
+  --bg: #07080d;
+  --bg-elev: #10121a;
+  --bg-panel: rgba(16, 18, 28, 0.82);
+  --line: rgba(255, 255, 255, 0.08);
+  --text: #eef1f7;
+  --muted: #8b93a7;
+  --accent: #6ee7ff;
+  --accent-2: #a78bfa;
+  --good: #34d399;
+  --warn: #fbbf24;
+  --bad: #f87171;
+  --radius: 16px;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body, #root { height: 100%; background: var(--bg); color: var(--text); }
+button, input, select { font-family: inherit; }
+button { cursor: pointer; }
+
+.app {
+  min-height: 100%;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(110, 231, 255, 0.12), transparent 50%),
+    radial-gradient(900px 500px at 100% 0%, rgba(167, 139, 250, 0.14), transparent 45%),
+    var(--bg);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+.brand { display: flex; gap: 12px; align-items: center; }
+.logo {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+.brand h1 {
+  font-family: Syne, sans-serif;
+  font-size: 20px;
+  letter-spacing: -0.03em;
+}
+.brand span { color: var(--muted); font-size: 12px; display: block; }
+.pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.pill {
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.pill.active { border-color: var(--accent); color: var(--accent); }
+
+.layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 300px;
+  gap: 16px;
+  padding: 16px;
+  min-height: calc(100vh - 72px);
+}
+
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  backdrop-filter: blur(20px);
+}
+.panel h2 {
+  font-family: Syne, sans-serif;
+  font-size: 14px;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+.stage canvas, .stage video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-height: 70vh;
+}
+.hud {
+  position: absolute;
+  inset: 12px auto auto 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.badge {
+  background: rgba(0,0,0,0.55);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+.live { color: var(--bad); }
+
+.stack { display: flex; flex-direction: column; gap: 10px; }
+.btn {
+  border: 1px solid var(--line);
+  background: #171a24;
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: left;
+}
+.btn.primary {
+  background: linear-gradient(135deg, #134e5a, #2c3e7a);
+  border-color: transparent;
+}
+.btn:hover { border-color: var(--accent); }
+.row { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.row b { color: var(--text); font-weight: 500; }
+
+.slider {
+  width: 100%;
+  accent-color: var(--accent);
+}
+.hint { font-size: 12px; color: var(--muted); line-height: 1.45; }
+
+.metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.metric {
+  background: #0c0e16;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px;
+}
+.metric small { color: var(--muted); font-size: 11px; }
+.metric strong { display: block; font-size: 18px; margin-top: 4px; }
+
+.compare {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.sender {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 24px;
+}
+.qr {
+  height: 160px;
+  border-radius: 16px;
+  background:
+    repeating-linear-gradient(90deg, #111 0 8px, #222 8px 16px),
+    repeating-linear-gradient(#111 0 8px, #222 8px 16px);
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+  font-family: Syne, sans-serif;
+}
+
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: 1fr; }
+}
