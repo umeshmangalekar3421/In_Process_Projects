@@ -1,0 +1,16 @@
+[package]
+name = "aethercast-desktop"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+wgpu = "0.19"
+winit = "0.29"
+anyhow = "1"
+bytemuck = { version = "1", features = ["derive"] }
+ffmpeg-next = "7.0"
+cpal = "0.15"
+symphonia = { version = "0.5", features = ["aac"] }
+log = "0.4"
+env_logger = "0.10"
